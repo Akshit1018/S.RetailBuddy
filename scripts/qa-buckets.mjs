@@ -1,0 +1,20 @@
+import { chromium } from "playwright";
+const browser = await chromium.launch({ headless: true, args: ["--no-sandbox"] });
+const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+await page.goto("http://127.0.0.1:8080");
+await page.evaluate(() => localStorage.clear());
+await page.reload({ waitUntil: "networkidle" });
+await page.getByRole("button", { name: /Skip/i }).click();
+await page.waitForTimeout(800);
+// seed has products - switch language en
+const names = await page.evaluate(() => [...document.querySelectorAll('button')].map(b => b.innerText.replace(/\n/g,'|')).filter(t => /Stock|Buy|Expiry|Expired|स्टॉक/.test(t)).slice(0,8));
+console.log(names);
+await page.getByRole("button", { name: /Buy/i }).first().click();
+await page.waitForTimeout(200);
+await page.getByRole("button", { name: /Expiry/i }).first().click();
+await page.waitForTimeout(200);
+await page.getByRole("button", { name: /Expired/i }).first().click();
+await page.waitForTimeout(200);
+await page.screenshot({ path: "/workspace/screenshots/done-buckets.png" });
+console.log("ok");
+await browser.close();

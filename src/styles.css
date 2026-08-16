@@ -1,0 +1,450 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+  Avenra-inspired polish: soft light surfaces, pill chrome,
+  soft blue brand, airy spacing. Features unchanged.
+*/
+@theme {
+  --color-bg: #0c0d10;
+  --color-surface: #16171c;
+  --color-elevated: #1e2028;
+  --color-muted-surface: #282a33;
+  --color-fg: #f4f5f7;
+  --color-muted: #9aa0ad;
+  --color-subtle: #6d7484;
+  --color-border: #2a2d38;
+  --color-border-strong: #3a3e4c;
+  --color-primary: #5b7cff;
+  --color-primary-fg: #ffffff;
+  --color-primary-dim: #1e2a55;
+  --color-success: #22c55e;
+  --color-warning: #f5a524;
+  --color-danger: #ef4444;
+  --color-info: #38bdf8;
+  --color-sell: #111318;
+  --color-sell-fg: #ffffff;
+  --color-bucket-white: #f4f4f5;
+  --color-bucket-white-fg: #18181b;
+  --color-bucket-green: #22c55e;
+  --color-bucket-green-fg: #052e16;
+  --color-bucket-yellow: #f5a524;
+  --color-bucket-yellow-fg: #422006;
+  --color-bucket-red: #ef4444;
+  --color-bucket-red-fg: #450a0a;
+  --font-sans: "Plus Jakarta Sans", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "SF Pro Display", system-ui, sans-serif;
+  --font-splash: "Newsreader", "Plus Jakarta Sans", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 1.75rem;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.24), 0 10px 28px -16px rgb(0 0 0 / 0.55);
+  --shadow-soft: 0 8px 30px -12px rgb(15 23 42 / 0.18);
+  --shadow-nav: 0 8px 28px -8px rgb(0 0 0 / 0.28);
+  --color-splash: #e6ebf1;
+  --color-splash-fg: #111318;
+  --color-splash-muted: #6b7280;
+  --color-splash-cta: #ffffff;
+  --color-splash-dot: #16171c;
+  --color-splash-bar: #4f6ef7;
+  --color-splash-track: #c9d1dc;
+  --color-splash-link: #2563eb;
+}
+
+/* Light theme — primary product look (Avenra-like) */
+html[data-theme="light"] {
+  --color-bg: #eef0f4;
+  --color-surface: #ffffff;
+  --color-elevated: #f5f6f9;
+  --color-muted-surface: #e8eaef;
+  --color-fg: #111318;
+  --color-muted: #6b7280;
+  --color-subtle: #9ca3af;
+  --color-border: #e6e8ee;
+  --color-border-strong: #d0d4dc;
+  --color-primary: #4f6ef7;
+  --color-primary-fg: #ffffff;
+  --color-primary-dim: #e8ecff;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-info: #2563eb;
+  --color-sell: #111318;
+  --color-sell-fg: #ffffff;
+  --color-bucket-white: #ffffff;
+  --color-bucket-white-fg: #18181b;
+  --color-bucket-green: #16a34a;
+  --color-bucket-green-fg: #ffffff;
+  --color-bucket-yellow: #d97706;
+  --color-bucket-yellow-fg: #ffffff;
+  --color-bucket-red: #dc2626;
+  --color-bucket-red-fg: #ffffff;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 10px 28px -14px rgb(15 23 42 / 0.12);
+  --shadow-soft: 0 12px 40px -18px rgb(15 23 42 / 0.16);
+  --shadow-nav: 0 10px 32px -10px rgb(15 23 42 / 0.22);
+  --color-splash: #e6ebf1;
+  --color-splash-fg: #111318;
+  --color-splash-muted: #6b7280;
+  --color-splash-cta: #ffffff;
+  --color-splash-dot: #16171c;
+  --color-splash-bar: #4f6ef7;
+  --color-splash-track: #c9d1dc;
+  --color-splash-link: #2563eb;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    overflow-x: hidden;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100%;
+    min-height: 100svh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on, "cv11" on;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    scroll-margin-bottom: calc(var(--dock-total, 6.5rem) + 4rem);
+    scroll-margin-top: 5rem;
+  }
+
+  img,
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  table {
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+.splash-screen {
+  background: var(--color-splash);
+  color: var(--color-splash-fg);
+}
+
+.splash-screen .font-splash,
+.font-splash {
+  font-family: var(--font-splash);
+}
+
+.splash-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 52% 8%;
+}
+
+.splash-veil-top {
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgb(230 235 241 / 0.55),
+    rgb(230 235 241 / 0)
+  );
+}
+
+.splash-veil-bottom {
+  pointer-events: none;
+  position: absolute;
+  inset: auto 0 0;
+  height: min(52%, 24rem);
+  background: linear-gradient(
+    to top,
+    rgb(230 235 241) 0%,
+    rgb(230 235 241 / 0.94) 42%,
+    rgb(230 235 241 / 0)
+  );
+}
+
+.splash-title {
+  font-family: var(--font-splash);
+  font-size: clamp(1.35rem, 6.4vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+}
+
+.splash-sub {
+  font-size: clamp(0.75rem, 3.3vw, 0.875rem);
+  line-height: 1.45;
+}
+
+.splash-screen img {
+  max-width: none;
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .safe-pb {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-pt {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+
+  .app-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    overscroll-behavior-x: none;
+    scrollbar-width: thin;
+    scroll-padding-bottom: var(--dock-total);
+  }
+
+  .app-shell {
+    --dock-h: 4.35rem;
+    --dock-gap: 0.7rem;
+    --dock-safe: env(safe-area-inset-bottom, 0px);
+    --dock-total: calc(var(--dock-h) + var(--dock-gap) + var(--dock-safe) + 0.65rem);
+  }
+
+  .app-shell[data-dock="hidden"] .app-scroll,
+  .app-shell[data-keyboard="open"] .app-scroll {
+    scroll-padding-bottom: calc(1rem + var(--dock-safe));
+  }
+
+  .floating-dock {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    padding-inline: 0.75rem;
+    padding-bottom: max(0.65rem, env(safe-area-inset-bottom, 0px));
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 180ms ease;
+    will-change: transform, opacity;
+  }
+
+  .floating-dock > * {
+    pointer-events: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  .dock-bar {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 0.125rem;
+    min-height: var(--dock-h);
+    padding: 0.25rem;
+    border-radius: 1.5rem;
+    background: color-mix(in oklab, var(--color-surface) 94%, transparent);
+    box-shadow: var(--shadow-nav);
+    outline: 1px solid color-mix(in oklab, var(--color-fg) 10%, transparent);
+    outline-offset: -1px;
+    backdrop-filter: blur(16px);
+  }
+
+  .dock-item {
+    display: flex;
+    min-width: 0;
+    min-height: 3rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    border-radius: 1.2rem;
+    padding: 0.2rem 0.1rem;
+    color: var(--color-muted);
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .dock-item:active {
+    transform: scale(0.97);
+  }
+
+  .dock-item-active {
+    background: var(--color-fg);
+    color: var(--color-bg);
+  }
+
+  .dock-label {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 640px) {
+    .floating-dock {
+      padding-inline: 1rem;
+    }
+  }
+
+  .app-shell[data-dock="hidden"] .floating-dock,
+  .app-shell[data-keyboard="open"] .floating-dock {
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sticky-above-dock {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    margin-inline: -0.75rem;
+    padding: 0.75rem 0.75rem calc(0.85rem + var(--dock-total));
+    background: linear-gradient(
+      to top,
+      var(--color-bg) 72%,
+      color-mix(in oklab, var(--color-bg) 40%, transparent)
+    );
+  }
+
+  @media (min-width: 640px) {
+    .sticky-above-dock {
+      margin-inline: -1rem;
+      padding-inline: 1rem;
+    }
+  }
+
+  .app-shell[data-dock="hidden"] .sticky-above-dock,
+  .app-shell[data-keyboard="open"] .sticky-above-dock {
+    padding-bottom: calc(0.85rem + var(--dock-safe));
+  }
+
+  .table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fade-in {
+    animation: fade-up 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .sheet-card {
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pill-nav {
+    box-shadow: var(--shadow-nav);
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in {
+      animation: none;
+    }
+    .floating-dock {
+      transition: none;
+    }
+  }
+
+  @media print {
+    html,
+    body {
+      overflow: visible;
+      height: auto;
+    }
+    body * {
+      visibility: hidden;
+    }
+    .print-bill,
+    .print-bill * {
+      visibility: visible;
+    }
+    .print-bill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 210mm;
+      background: white !important;
+      color: black !important;
+      padding: 16mm;
+    }
+    body.thermal-print .print-bill {
+      width: 58mm;
+      padding: 4mm;
+      font-size: 11px;
+    }
+    .no-print {
+      display: none !important;
+    }
+  }
+}
