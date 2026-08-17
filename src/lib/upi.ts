@@ -8,7 +8,7 @@ export function buildUpiLink(opts: {
   const pa = opts.pa.trim();
   const params = new URLSearchParams();
   params.set("pa", pa);
-  params.set("pn", opts.pn || "StockScan");
+  params.set("pn", opts.pn || "Retail Buddy");
   params.set("cu", "INR");
   if (opts.am && opts.am > 0) params.set("am", opts.am.toFixed(2));
   if (opts.tn) params.set("tn", opts.tn.slice(0, 50));

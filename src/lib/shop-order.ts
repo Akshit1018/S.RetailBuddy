@@ -98,7 +98,7 @@ export function buildOrderWhatsAppText(opts: {
     opts.payload.note ? `Note: ${opts.payload.note}` : "",
     ``,
     `---`,
-    `Shop: paste this in StockScan → Orders`,
+    `Shop: paste this in Retail Buddy → Orders`,
     opts.token,
   ]
     .filter(Boolean)

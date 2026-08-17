@@ -116,7 +116,7 @@ export function packWhatsApp(shop: ShopCard, pack: CaPack): string {
     `Day close: cash ${formatINR(pack.cash)} · UPI ${formatINR(pack.upi)} (${pack.dayCloses} days)`,
     `Salary: ${formatINR(pack.salaries)} · PF ${formatINR(pack.salaryPf)}`,
     ``,
-    `Full pack is a PIN-locked file from StockScan. Ask the shop for the 4-digit PIN.`,
+    `Full pack is a PIN-locked file from Retail Buddy. Ask the shop for the 4-digit PIN.`,
   ].join("\n");
 }
 
@@ -196,7 +196,7 @@ export function buildLockedHtml(opts: {
     <table><thead><tr><th>Date</th><th>Cash</th><th>UPI</th><th>Credit</th></tr></thead><tbody>${dayRows || "<tr><td colspan=4>No day closed</td></tr>"}</tbody></table>
     <h2>Salaries</h2>
     <table><thead><tr><th>Staff</th><th>PF</th><th>Mode</th><th>Net</th></tr></thead><tbody>${salRows || "<tr><td colspan=4>No slip this month</td></tr>"}</tbody></table>
-    <p style="font-size:12px;color:#555">Prepared in StockScan. Print this page to PDF (Ctrl/Cmd+P). Not a filed GST return — give to your CA.</p>
+    <p style="font-size:12px;color:#555">Prepared in Retail Buddy. Print this page to PDF (Ctrl/Cmd+P). Not a filed GST return — give to your CA.</p>
   `;
 
   const token = btoa(unescape(encodeURIComponent(pin.trim() || "0000")));

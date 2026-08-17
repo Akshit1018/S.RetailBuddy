@@ -58,7 +58,7 @@ function BillDetailPage() {
   const canCollect = effectiveStaffPerms(me).collectPay;
   const shop = useStockStore((s) => {
     const p = s.profiles.find((x) => x.id === sale?.soldByProfileId);
-    return p?.shopName || s.shop.name || s.profiles[0]?.shopName || "StockScan";
+    return p?.shopName || s.shop.name || s.profiles[0]?.shopName || "Retail Buddy";
   });
 
   const [partial, setPartial] = useState("");

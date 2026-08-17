@@ -40,7 +40,7 @@ export type FxQuote = {
   at: string;
 };
 
-const UA = "StockScan/1.0 (kirana inventory; +https://x.ai)";
+const UA = "RetailBuddy/1.0 (kirana inventory; +https://github.com/Akshit1018/S.RetailBuddy)";
 
 async function getJson(url: string, ms = 8000): Promise<unknown> {
   const ctrl = new AbortController();

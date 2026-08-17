@@ -18,7 +18,7 @@ export function buildWhatsAppBillLink(opts: {
     )
     .join("\n");
   const remaining = Math.max(0, opts.sale.totalRevenue - opts.sale.amountPaid);
-  const shop = opts.shopName || "StockScan";
+  const shop = opts.shopName || "Retail Buddy";
   const text = [
     `*${shop}* — Bill ${opts.sale.billNo}`,
     ``,

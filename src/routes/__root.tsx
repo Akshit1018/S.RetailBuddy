@@ -7,7 +7,7 @@ import { ProfileGate } from "@/components/profile-gate";
 import { I18nProvider } from "@/lib/i18n-context";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "StockScan";
+const APP_NAME = "Retail Buddy";
 const host = import.meta.env.VITE_PUBLIC_HOSTNAME;
 const ogImage = host
   ? `https://og.grok.me/v1/card.png?host=${encodeURIComponent(host)}&title=${encodeURIComponent(APP_NAME)}`
